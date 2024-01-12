@@ -7,13 +7,6 @@ const AnalyticsService = require('../../Helper/AnalyticsService.js')
 
 app.use(bodyParser.json());
 
-const analyticsData = [];
-
-const handleUpdate = (eventData) => {
-  analyticsData.push(eventData);
-  console.log('Update logic executed');
-  console.log(analyticsData)
-};
 
 app.get('/data', async (req, res) => {
   let analyticsService = new AnalyticsService()
@@ -21,9 +14,9 @@ app.get('/data', async (req, res) => {
     const query = req.query
     if(query?.q_id && query?.u_id){
 
-      let data = await analyticsService.getAnalytics(query.u_id, query.u_id);
-      console.log(data);
-      res.status(200).json(data); // Assuming you want to send the data as JSON
+      let data = await analyticsService.getAnalytics(query.u_id, query.q_id);
+      res.status(200).json(data);
+  
     } else {
       throw Error("Bad Query")
     }
@@ -34,12 +27,28 @@ app.get('/data', async (req, res) => {
 });
 
 
-app.get('/scan', (req, res) => {
-  console.log(req)
-  const eventData = { message: 'Some update data' };
-  handleUpdate(eventData)
-  res.redirect("https://instagram.com");
+app.get('/scan', async (req, res) => {
+  let analyticsService = new AnalyticsService()
+  try {
+    const query = req.query
+    if(query?.q_id && query?.u_id){
+
+      await analyticsService.appendScanRecord(query.u_id, query.q_id)
+
+    } else {
+      throw Error("Bad Query")
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  } finally {
+    res.redirect("https://instagram.com");
+  }
 });
+
+
+
+
 
 app.listen(port, () => {
   console.log(`Analytics Service is running on port ${port}`);

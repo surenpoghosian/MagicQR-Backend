@@ -34,10 +34,6 @@ app.use('/content', (req, res) => {
   contentProxy.web(req, res);
 });
 
-// app.use('/scan', (req, res) => {
-//   analyticsProxy.web(req, res);
-// });
-
 
 
 app.listen(port, () => {

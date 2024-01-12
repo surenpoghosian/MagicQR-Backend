@@ -1,7 +1,7 @@
-function UserService(){
+function ContentService(){
     this.createUser = () =>{
         
     }
 } 
 
-module.exports = UserService
+module.exports = ContentService
