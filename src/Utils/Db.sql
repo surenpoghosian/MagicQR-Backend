@@ -23,7 +23,8 @@ CREATE TABLE `qr_codes` (
   `id` INT(11) AUTO_INCREMENT,
   `u_id` VARCHAR(200),
   `q_id` VARCHAR(200),
-  `url` VARCHAR(200),
+  `img_url` VARCHAR(200),
+  `destination_url` VARCHAR(200),
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP(),
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
