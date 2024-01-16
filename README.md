@@ -21,5 +21,5 @@ PS. use PM2 for best perfomance
 # Make sure to:
 
 1. `create a db in mysql`
-2. run the .sql file with command `source /path/to/Db.sql`
+2. run the .sql file with command `source /path/to/Db.sql` inside mysql console
 3. input your mysql user credentials in ./src/Utils/MysqlConnectionPool.js
