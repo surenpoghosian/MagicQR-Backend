@@ -1,6 +1,7 @@
 # MagicQR-Backend
 - Microservice architecture
 - node js | express
+- mysql
 - [qr-engine](https://replicate.com/zylim0702/qr_code_controlnet)
 
 [Postman documentation](https://documenter.getpostman.com/view/20677273/2s9YsNdVrw)
@@ -15,3 +16,10 @@
 5. Also run all the microservices located in "./src/API Services" folder 
 
 PS. use PM2 for best perfomance
+
+
+# Make sure to:
+
+1. `create a db in mysql`
+2. run the .sql file with command `source /path/to/Db.sql`
+3. input your mysql user credentials in ./src/Utils/MysqlConnectionPool.js
